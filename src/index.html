@@ -11,15 +11,40 @@
         </style>
 </head>
 <body>
-  <header class="p-6 h-20 flex bg-black justify-between fixed top-0 inset-0 w-[100vw] items-center">
+  <script>
+    let toggle = false;
+  </script>
+  <header class="p-6 h-10 flex bg-black justify-between fixed top-0 inset-0 w-[100vw] items-center">
     <div class="font-dynalight  text-4xl text-primary ">Somya</div>
-    <nav class="flex space-x-6 font-semibond text-lg text-white">
+    <nav class=" hidden md:flex  space-x-6 font-semibond text-lg text-white">
         <a class="hover:text-primary" href="#home">Home</a>
         <a class="hover:text-primary" href="#skills">Skills</a>
-        <a class="hover:text-primary" href="#Exeriance">Expreience</a>
+        <a class="hover:text-primary" href="#experience">Experience</a>
         <a class="hover:text-primary" href="#projects">Projects</a>
     </nav>
-    <button class=" px-4 py-2 font-semibold text-md rounded-2xl bg-primary">Contact Me</button>
+    <a href="#contact"><button class="hidden md:flex px-4 py-2 font-semibold text-md rounded-2xl bg-primary">Contact Me</button></a>
+    <button
+    class="fixed md:hidden top-7 -translate-y-1/2 mt-3 right-7 z-50 text-white text-3xl"
+    onclick="toggleNav()"
+  >
+    <span id="toggler" class="fa-solid fa-bars">
+  </button>
+    <nav
+    id="sidenav"
+    class="fixed inset-y-0 right-0 min-h-screen w-52 bg-stone-900 z-40 text-white translate-x-52 transition-all duration-300"
+  >
+    <ul
+      class="flex flex-col space-y-8 font-semibold text-lg w-fit h-full mx-auto items-center justify-center"
+    >
+      <li class="hover:text-primary"><a onclick="toggleNav()" href="#home">Home</a></li>
+      <li class="hover:text-primary"><a onclick="toggleNav()" href="#skills">Skills</a></li>
+      <li class="hover:text-primary">
+        <a onclick="toggleNav()" href="#experience">Experience</a>
+      </li>
+      <li class="hover:text-primary"><a onclick="toggleNav()" href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+    
   </header>
   <section id="home" class="h-fit  shadow-lg p-6 pt-20 bg-black ">
     <div class="flex flex-col sm:flex-row gap-5  justify-center items-center">
@@ -44,7 +69,7 @@
     </div>
   </section>
 
-  <section id="Skill" class="h-[100vh]  sm:h-fit  shadow-lg p-6  bg-black">
+  <section id="experience" class="h-[100vh]  sm:h-fit  shadow-lg p-6  bg-black">
     <div class="flex justify-center items-center flex-col" >
       <h1 class="text-7xl text-primary font-dynalight">Experience</h1>
       <div class="text-white my-10 space-y-8 ">
@@ -62,7 +87,7 @@
       </div>
     </div>
   </section>
-  <section id="Skill" class="min-h-[100vh] h-auto shadow-lg p-6  bg-black">
+  <section id="skills" class="min-h-[100vh] h-auto shadow-lg p-6 bg-black">
     <div class=" flex justify-center items-center flex-col ">
       <h1 class="text-7xl text-primary font-dynalight">Skill</h1>
     </div>
@@ -115,37 +140,29 @@
 
 </form>
 </div>
-
-
-
-
-
-
-
-
-
-
-
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   </div>
-
-
-
   </section >
+  <script>
+    const sideNav = document.getElementById("sidenav");
+    const toggler=document.getElementById("toggler");
+    function toggleNav() {
+      if (!toggle) {
+        console.log("toggle=", toggle);
+        toggle = !toggle;
+        sideNav.classList.add("translate-x-0");
+        sideNav.classList.remove("translate-x-52");
+        toggler.classList.add("fa-xmark");
+        toggler.classList.remove("fa-bars");
+      } else {
+        console.log("toggle=", toggle);
+        toggle = !toggle;
+        sideNav.classList.add("translate-x-52");
+        sideNav.classList.remove("translate-x-0");
+        toggler.classList.add("fa-bars");
+        toggler.classList.remove("fa-xmark");
+      }
+    }
+  </script>
 </body>
 </html>
